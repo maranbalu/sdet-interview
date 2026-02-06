@@ -1,13 +1,12 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import java.io.File;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class InterviewTest {
 
@@ -15,33 +14,24 @@ public class InterviewTest {
 
     @BeforeMethod
     public void setUp() {
-        // Set system property for ChromeDriver location
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        // Use WebDriverManager to automatically setup ChromeDriver
+        WebDriverManager.chromedriver().setup();
 
-        // Chrome options for Gitpod environment
+        // Chrome options
         ChromeOptions options = new ChromeOptions();
 
-        // Explicitly set Chrome binary path
-        options.setBinary(new File("/usr/bin/chromium-browser"));
-
-        // Required flags for containerized environments
+        // Required for cloud/containerized environments (Replit, Gitpod, etc.)
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
         options.addArguments("--window-size=1920,1080");
         options.addArguments("--remote-debugging-port=9222");
 
-        // Always use headless mode (works everywhere - Replit, Gitpod, local)
-        System.out.println("🚀 Running Chrome in headless mode");
+        // Headless mode - required for Replit/cloud environments
         options.addArguments("--headless=new");
 
-        // Create ChromeDriverService to use system chromedriver
-        ChromeDriverService service = new ChromeDriverService.Builder()
-            .usingDriverExecutable(new File("/usr/bin/chromedriver"))
-            .usingAnyFreePort()
-            .build();
-
-        driver = new ChromeDriver(service, options);
+        System.out.println("🚀 Starting Chrome browser in headless mode...");
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
 
