@@ -5,12 +5,12 @@ tasks:
       mvn clean install -DskipTests
     command: |
       echo "=========================================="
-      echo "✅ Selenium Java Interview Environment Ready!"
+      echo "Selenium Java Interview Environment Ready!"
       echo "=========================================="
       echo ""
-      echo "🌐 Browser View: Check port 6080 (noVNC)"
-      echo "▶️  Run Tests: mvn test"
-      echo "📝 Edit: src/test/java/InterviewTest.java"
+      echo "Browser View: Check port 6080 (noVNC)"
+      echo "Run Tests: mvn test"
+      echo "Edit: src/test/java/InterviewTest.java"
       echo ""
       echo "Waiting for commands..."
 
