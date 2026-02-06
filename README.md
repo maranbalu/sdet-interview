@@ -2,13 +2,30 @@
 
 ## 🚀 Quick Start
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://github.com/maranbalu/sdet-interview)
+### **Option 1: Replit (Recommended - Simple & Fast)**
+[![Run on Replit](https://replit.com/badge/github/maranbalu/sdet-interview)](https://replit.com/new/github/maranbalu/sdet-interview)
+
+**Steps:**
+1. Click the Replit badge above
+2. Wait for setup (~30 seconds)
+3. Click "Run" button
+4. Tests execute in headless mode automatically!
+
+### **Option 2: Gitpod (Advanced - VNC Browser View)**
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/maranbalu/sdet-interview)
 
 ## 📋 For Interviewers
 
-1. Click the Gitpod button above
+### **Using Replit (Easiest):**
+1. Click "Run on Replit" badge
+2. Click "Run" button (runs `mvn clean test`)
+3. Share Replit workspace with candidate
+4. Candidate can edit tests and click "Run"
+
+### **Using Gitpod (With Browser View):**
+1. Click "Open in Gitpod" button
 2. Wait 1-2 minutes for environment setup
-3. Click on port 6080 to view browser
+3. Click on port 6080 to view browser (VNC)
 4. Run tests: `mvn test`
 5. Share workspace with candidate
 

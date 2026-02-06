@@ -31,14 +31,9 @@ public class InterviewTest {
         options.addArguments("--window-size=1920,1080");
         options.addArguments("--remote-debugging-port=9222");
 
-        // Use headless mode if DISPLAY is not set (fallback)
-        String display = System.getenv("DISPLAY");
-        if (display == null || display.isEmpty()) {
-            System.out.println("⚠️ No DISPLAY found, using headless mode");
-            options.addArguments("--headless=new");
-        } else {
-            System.out.println("✅ Using DISPLAY: " + display + " (VNC mode)");
-        }
+        // Always use headless mode (works everywhere - Replit, Gitpod, local)
+        System.out.println("🚀 Running Chrome in headless mode");
+        options.addArguments("--headless=new");
 
         // Create ChromeDriverService to use system chromedriver
         ChromeDriverService service = new ChromeDriverService.Builder()

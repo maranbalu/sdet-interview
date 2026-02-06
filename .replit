@@ -1,0 +1,8 @@
+run = "mvn clean test"
+language = "java"
+
+[nix]
+channel = "stable-23_11"
+
+[deployment]
+run = ["sh", "-c", "mvn clean test"]
