@@ -1,11 +1,13 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import java.io.File;
 
 public class InterviewTest {
 
@@ -13,11 +15,14 @@ public class InterviewTest {
 
     @BeforeMethod
     public void setUp() {
+        // Set system property for ChromeDriver location
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+
         // Chrome options for Gitpod environment
         ChromeOptions options = new ChromeOptions();
 
-        // Use system Chrome instead of Selenium's cached version
-        options.setBinary("/usr/bin/chromium-browser");
+        // Explicitly set Chrome binary path
+        options.setBinary(new File("/usr/bin/chromium-browser"));
 
         // Required flags for containerized environments
         options.addArguments("--no-sandbox");
@@ -29,13 +34,19 @@ public class InterviewTest {
         // Use headless mode if DISPLAY is not set (fallback)
         String display = System.getenv("DISPLAY");
         if (display == null || display.isEmpty()) {
-            System.out.println("No DISPLAY found, using headless mode");
+            System.out.println("⚠️ No DISPLAY found, using headless mode");
             options.addArguments("--headless=new");
         } else {
-            System.out.println("Using DISPLAY: " + display);
+            System.out.println("✅ Using DISPLAY: " + display + " (VNC mode)");
         }
 
-        driver = new ChromeDriver(options);
+        // Create ChromeDriverService to use system chromedriver
+        ChromeDriverService service = new ChromeDriverService.Builder()
+            .usingDriverExecutable(new File("/usr/bin/chromedriver"))
+            .usingAnyFreePort()
+            .build();
+
+        driver = new ChromeDriver(service, options);
         driver.manage().window().maximize();
     }
 
