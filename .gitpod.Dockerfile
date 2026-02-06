@@ -1,8 +1,9 @@
 FROM gitpod/workspace-full-vnc
 
-# Install Chrome, ChromeDriver, and Firefox
+# Install Maven, Chrome, ChromeDriver, and Firefox
 RUN sudo apt-get update && \
     sudo apt-get install -y \
+    maven \
     chromium-browser \
     chromium-chromedriver \
     firefox-esr \
