@@ -15,11 +15,25 @@ public class InterviewTest {
     public void setUp() {
         // Chrome options for Gitpod environment
         ChromeOptions options = new ChromeOptions();
+
+        // Use system Chrome instead of Selenium's cached version
+        options.setBinary("/usr/bin/chromium-browser");
+
+        // Required flags for containerized environments
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
         options.addArguments("--window-size=1920,1080");
-        // NOT using --headless so browser is visible in noVNC
+        options.addArguments("--remote-debugging-port=9222");
+
+        // Use headless mode if DISPLAY is not set (fallback)
+        String display = System.getenv("DISPLAY");
+        if (display == null || display.isEmpty()) {
+            System.out.println("No DISPLAY found, using headless mode");
+            options.addArguments("--headless=new");
+        } else {
+            System.out.println("Using DISPLAY: " + display);
+        }
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
