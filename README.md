@@ -2,7 +2,7 @@
 
 ## 🚀 Quick Start
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#YOUR_REPO_URL)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://github.com/maranbalu/sdet-interview)
 
 ## 📋 For Interviewers
 
@@ -15,15 +15,18 @@
 ## 🎯 For Candidates
 
 ### Running Tests
+
 ```bash
 mvn test
 ```
 
 ### View Browser
+
 - Click on "Ports" tab in bottom panel
 - Click "Open Browser" icon next to port 6080
 
 ### File Structure
+
 ```
 src/test/java/InterviewTest.java - Your test file
 ```
@@ -39,9 +42,11 @@ src/test/java/InterviewTest.java - Your test file
 ## 🔧 Troubleshooting
 
 **Browser not visible?**
+
 - Check port 6080 is open
 - Click "Open Browser" next to port 6080
 
 **Tests failing?**
+
 - Check ChromeDriver is installed: `which chromedriver`
 - Verify Chrome: `chromium-browser --version`
