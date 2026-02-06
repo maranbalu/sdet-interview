@@ -4,6 +4,8 @@ tasks:
       # Install dependencies
       mvn clean install -DskipTests
     command: |
+      # Set DISPLAY for VNC
+      export DISPLAY=:0
       echo "=========================================="
       echo "Selenium Java Interview Environment Ready!"
       echo "=========================================="
